@@ -1,0 +1,27 @@
+<HEAD>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    </HEAD>
+    <div class="bg">
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <!-- Tabs Titles -->
+    
+        <!-- Icon -->
+        <div class="fadeIn first">
+          <img src="/static/coclogin.png" id="icon" alt="User Icon" />
+        </div>
+    
+        <!-- Login Form -->
+        <form action="/signup" method="POST">
+          <input type="text" id="emailid" class="fadeIn second" name="emailid" placeholder="Email">
+          <input type="password" id="password" class="fadeIn third" name="signuppassword" placeholder="password">
+          <input type="password" id="password" class="fadeIn third" name="signuppassword2" placeholder="Re-enter password">
+          <input type="submit" class="fadeIn fourth" value="Sign Up">
+        </form>
+    
+      </div>
+    </div>
+    </div>
