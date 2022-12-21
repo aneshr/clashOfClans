@@ -1,6 +1,7 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import uuid
+from os import path
 db = SQLAlchemy()
 DB_NAME = "cocDB.db"
 
@@ -11,6 +12,10 @@ def create_app():
 
     db.init_app(app)
     
+    from .models import User
+
+    create_database(app=app)
+
     from .views import views
     from .auth import auth
     app.register_blueprint(views)
@@ -18,3 +23,7 @@ def create_app():
     return app
 
 
+def create_database(app):
+    if not path.exists("website/" + DB_NAME):
+        db.create_all(app=app)
+        print("Created Database!")
