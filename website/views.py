@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template
-
+from flask_login import login_required
 '''
 A Blueprint is a way to organize a group of related views and other code.
 Rather than registering views and other code directly with an application,
@@ -14,6 +14,7 @@ views = Blueprint("views",__name__,url_prefix='/')
 
 @views.route('/')
 @views.route('home')
+@login_required
 def home():
     return render_template('homepage.html')
 

@@ -1,7 +1,9 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import uuid
+from flask_login import LoginManager
 from os import path
+
 db = SQLAlchemy()
 DB_NAME = "cocDB.db"
 
@@ -15,6 +17,15 @@ def create_app():
     from .models import User
 
     create_database(app=app)
+
+    loginManager = LoginManager()
+    loginManager.login_view = "auth.login"
+
+    loginManager.init_app(app)
+
+    @loginManager.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
 
     from .views import views
     from .auth import auth

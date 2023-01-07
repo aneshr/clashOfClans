@@ -1,12 +1,28 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
+from flask_login import login_user, logout_user, current_user
 from .models import User
 from . import db
 from werkzeug.security import generate_password_hash, check_password_hash
 import time
 auth = Blueprint("auth",__name__,url_prefix='/')
 
-@auth.route('login')
+@auth.route('login', methods=['GET','POST'])
 def login():
+    if request.method == 'POST':
+        email = request.form.get('login')
+        password = request.form.get('password')
+
+        user = User.query.filter_by(email=email).first()
+        if user:
+            if check_password_hash(user.password,password):
+                flash("Logged In!",category='success')
+                login_user(user,remember=True)
+                return redirect(url_for('views.home'))
+            else:
+                flash("Password Incorrect",category='error')
+        else:
+            flash('User Doesnot Exist',category='error')
+
     return render_template('login.html')
 
 @auth.route('signup', methods=['GET','POST'])
