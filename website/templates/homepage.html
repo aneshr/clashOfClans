@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 {% block title %} HOMEPAGE {% endblock title %}
 {% block content %}
-This is the Body of the HOMEPAGE!
-<br>Members <br>
+Members <br>
 
-<form name="membersList">
+<form name="membersList" method="POST">
     <label for="exampleFormControlFile2">Choose member</label>
       <select name="member">
-        {% for info in data['member-data'] %}
-          <option value="{{ info['playerTag'] }}" SELECTED>{{ info['name'] }}</option>
-        {% endfor %}     
+        {% for info in data %}
+          <option value="{{ info['name'] }}" SELECTED>{{ info['name'] }}</option>
+        {% endfor %}
       </select>
+      <input type="submit"  value="Submit">
 </form>
 
 
