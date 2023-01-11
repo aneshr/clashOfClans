@@ -1,0 +1,31 @@
+.coc-img {
+    border-radius: 4px;
+    padding: 5px;
+    width: 50px;
+}
+.hightroop {
+    display: grid;
+    grid-template-columns: 65vh 65vh 65vh ;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: rgb(87, 4, 176);
+  }
+  
+  .troop {
+    background-color: rgb(95, 0, 178);
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
+  .troop:hover {
+    background-color: rgb(136, 0, 255);
+    color: #fff;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
+  .troophead {
+    color: black;
+  }
+

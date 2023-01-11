@@ -1,8 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} HOMEPAGE {% endblock title %}
+{% block css %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/userpage.css') }}">
+{% endblock css %}
 {% block content %}
 
-<label name="Name"> <b>Name:</b> {{userData['name']}} </label><br>
+<label name="Name" class="newname123"> Name: {{userData['name']}} </label><br>
 <label name="THLevel"> <b>TownHall:</b> {{userData['THLevel']}} </label><br>
 <label name="Exp"> <b>Experience:</b> {{userData['exp']}} </label><br>
 <label name="Trophy"> <b>Trophy:</b> {{userData['trophy']}} </label><br>
@@ -10,10 +13,17 @@
 <label name="league"> <b>League:</b> {{userData['league']}} </label><br>
 
 Troops<br>
+<div class="hightroop">
 {% for troop in userData['troops'] %}
-    <b>{{troop['name']}}</b><br>
-    Level: {{troop['level']}} MaxLevel: {{troop['maxLevel']}} Village: {{troop['village']}}<br>
+<div class="troop">
+<div class="troophead"><b>{{troop['name']}}</b></div><br>
+{{troop['level']}}
+<progress id="file" max="{{troop['maxLevel']}}" value="{{troop['level']}}"></progress>
+{{troop['maxLevel']}}
 
+
+<br>Village: {{troop['village']}}<br>
+</div>
 {% endfor%}
-
+</div>
 {% endblock content %}
