@@ -27,7 +27,7 @@ def home():
         playerName = request.form.get("member")
         userData = collection.find_one({"name":f"{playerName}"})
 
-        return f"{userData}"
+        return render_template('userpage.html',userData=userData)
     data = collection.find({},{"name":1,"_id":0})
 
     return render_template('homepage.html',data=data)

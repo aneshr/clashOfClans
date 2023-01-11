@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %} HOMEPAGE {% endblock title %}
+{% block content %}
+
+<label name="Name"> <b>Name:</b> {{userData['name']}} </label><br>
+<label name="THLevel"> <b>TownHall:</b> {{userData['THLevel']}} </label><br>
+<label name="Exp"> <b>Experience:</b> {{userData['exp']}} </label><br>
+<label name="Trophy"> <b>Trophy:</b> {{userData['trophy']}} </label><br>
+<label name="Role"> <b>Role:</b> {{userData['role']}} </label><br>
+<label name="league"> <b>League:</b> {{userData['league']}} </label><br>
+
+Troops<br>
+{% for troop in userData['troops'] %}
+    <b>{{troop['name']}}</b><br>
+    Level: {{troop['level']}} MaxLevel: {{troop['maxLevel']}} Village: {{troop['village']}}<br>
+
+{% endfor%}
+
+{% endblock content %}
