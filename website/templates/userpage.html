@@ -5,25 +5,57 @@
 {% endblock css %}
 {% block content %}
 
-<label name="Name" class="newname123"> Name: {{userData['name']}} </label><br>
-<label name="THLevel"> <b>TownHall:</b> {{userData['THLevel']}} </label><br>
-<label name="Exp"> <b>Experience:</b> {{userData['exp']}} </label><br>
-<label name="Trophy"> <b>Trophy:</b> {{userData['trophy']}} </label><br>
-<label name="Role"> <b>Role:</b> {{userData['role']}} </label><br>
-<label name="league"> <b>League:</b> {{userData['league']}} </label><br>
-
-Troops<br>
-<div class="hightroop">
-{% for troop in userData['troops'] %}
-<div class="troop">
-<div class="troophead"><b>{{troop['name']}}</b></div><br>
-{{troop['level']}}
-<progress id="file" max="{{troop['maxLevel']}}" value="{{troop['level']}}"></progress>
-{{troop['maxLevel']}}
-
-
-<br>Village: {{troop['village']}}<br>
+<div class="labels">
+<label name="Name" class="heading"> <b>Name:</b> {{userData['name']}} </label>
+<label name="THLevel" class="heading"> <b>TownHall:</b> {{userData['THLevel']}} </label>
+<label name="Exp" class="heading" > <b>Experience:</b> {{userData['exp']}} </label>
+<label name="Trophy" class="heading" > <b>Trophy:</b> {{userData['trophy']}} </label>
+<label name="Role" class="heading" > <b>Role:</b> {{userData['role']}} </label>
+<label name="league" class="heading" > <b>League:</b> {{userData['league']}} </label>
 </div>
-{% endfor%}
+
+<br><div class="troopheading"> <b><h5>Heroes</h5></b></div></br>
+<div class="background">   
+            {% for troop in userData['heroes'] %}
+                 <div class="block x">
+                    <b>{{troop['name']}}</b>
+                    <br>Level<br>
+                    {{troop['level']}}
+                    <progress id="file" max="{{troop['maxLevel']}}" value="{{troop['level']}}"></progress>
+                    {{troop['maxLevel']}}<br>
+                    Village: {{troop['village']}}<br>
+            </div>
+            {% endfor%}
 </div>
+
+<br><div class="troopheading"> <b><h5>Troops</h5></b></div></br>
+ <div class="background">
+            {% for troop in userData['troops'] %}
+            <div class="block x"> 
+                    <b>{{troop['name']}}</b>
+                    <br>Level<br>
+                    {{troop['level']}}
+                    <progress id="file" max="{{troop['maxLevel']}}" value="{{troop['level']}}"></progress>
+                    {{troop['maxLevel']}}<br>
+                    Village: {{troop['village']}}<br>
+            </div>
+            {% endfor%}
+</div>
+
+<br><div class="troopheading"> <b><h5>Spells</h5></b></div></br>
+<div class="background">
+            {% for troop in userData['spells'] %}
+            <div class="block x"> 
+                    <b>{{troop['name']}}</b>
+                    <br>Level<br>
+                    {{troop['level']}}
+                    <progress id="file" max="{{troop['maxLevel']}}" value="{{troop['level']}}"></progress>
+                    {{troop['maxLevel']}}<br>
+                    Village: {{troop['village']}}<br>
+            </div>
+            {% endfor%}
+</div>
+
+
+
 {% endblock content %}

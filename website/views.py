@@ -17,7 +17,7 @@ views = Blueprint("views",__name__,url_prefix='/')
 client = pymongo.MongoClient('mongodb://localhost:27017/')
 
 db = client['clashofclans']
-collection = db['members']
+collection = db['memberupdateed']
 
 @views.route('/', methods=['GET','POST'])
 @views.route('home', methods=['GET','POST'])
