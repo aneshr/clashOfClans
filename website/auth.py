@@ -9,6 +9,7 @@ auth = Blueprint("auth",__name__,url_prefix='/')
 @auth.route('login', methods=['GET','POST'])
 def login():
     if request.method == 'POST':
+ 
         email = request.form.get('login')
         password = request.form.get('password')
 
@@ -28,6 +29,8 @@ def login():
 @auth.route('signup', methods=['GET','POST'])
 def signup():
     if request.method == 'POST':
+        name = request.form.get('name')
+        username = request.form.get('username')
         email = request.form.get("emailid")
         password_1 = request.form.get("signuppassword")
         password_2 = request.form.get("signuppassword2")
@@ -40,7 +43,7 @@ def signup():
         elif len(password_1) < 5:
             flash(f"Password is too small!, Min characters required are 5!",category='error')
         else:
-            new_user = User(email=email,password=generate_password_hash(password_1,method="sha256"))
+            new_user = User(name=name,username=username,email=email,password=generate_password_hash(password_1,method="sha256"))
             db.session.add(new_user)
             db.session.commit()
             flash('User Created! Please Login')
@@ -55,4 +58,5 @@ def logout():
     Adding login method name here auth.login so that if the path changes it
     doesn't affect the working.
     '''
+    logout_user()
     return redirect(url_for('auth.login'))

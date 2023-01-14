@@ -21,6 +21,7 @@ collection = db['memberupdateed']
 
 @views.route('/', methods=['GET','POST'])
 @views.route('home', methods=['GET','POST'])
+@login_required
 def home():
     if request.method == 'POST':
         playerName = request.form.get("member")
