@@ -52,7 +52,7 @@ def signup():
 
     return render_template('signup.html')
 
-@auth.route('logout')
+@auth.route('logout',methods=['POST'])
 def logout():
     '''
     Adding login method name here auth.login so that if the path changes it

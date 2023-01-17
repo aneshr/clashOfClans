@@ -99,9 +99,10 @@
          z-index:100;
         -webkit-animation:scale 1s linear;
         -moz-animation:scale 1s linear;
-        animation:scale 1s linear;
+        animation:scale 0.5s linear;
         transform-origin:50% 50%;
         animation-fill-mode: forwards;
+        background-color:#ad67f7;
       }
       
       
@@ -129,6 +130,7 @@
 
       .background {
         display: grid;
+        border-radius: 5px;
         grid-template-columns: auto auto auto;
         background-color: #f0f8ff;
         padding: 10px;
@@ -136,12 +138,13 @@
         z-index: -1;
       }
       .x {
+        border-radius: 5px;
         background-color: rgba(255, 255, 255, 0.8);
         border: 1px solid rgba(0, 0, 0, 0.8);
         padding: 20px;
         font-size: 30px;
         text-align: center;
-        background-color:#9CB1FF;
+        background-color:#9432fc;
         position: relative;
         line-height:30px;
       }
