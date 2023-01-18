@@ -21,7 +21,6 @@ db = client['clashofclans']
 collection = db['userdatamap']
 
 def clanData(tag,token,header):
-    
     clanInfo = requests.get(f"https://api.clashofclans.com/v1/clans/{tag}",headers=header).json()
     #print(clanInfo)
     clanName = clanInfo['name']
@@ -67,13 +66,25 @@ def userData(members,token,header):
 @views.route('home', methods=['GET','POST'])
 @login_required
 def home():
+    db = client['clashofclans']
+    collection = db['userdatamap']
+    current_user_data = User.query.filter_by(id=current_user.id).first()
+    mail = current_user_data.email
     if request.method == 'POST':
         playerName = request.form.get("member")
-        userData = collection.find_one({"name":f"{playerName}"})
-
-        return render_template('userpage.html',userData=userData)
-    data = collection.find({},{"name":1,"_id":0})
-
+        userData = collection.find_one({"usermail":f"{mail}"})['data']
+        print(playerName, userData)
+        
+        res=""
+        for user in userData:
+            if user['name'] == playerName:
+                res = user
+                break
+        return render_template('userpage.html',userData=res)
+    
+    
+    data = collection.find_one({"usermail":f"{mail}"})['data']    
+    
     return render_template('homepage.html',data=data)
 
 @views.route('/getToken', methods=['GET','POST'])
@@ -96,7 +107,7 @@ def getToken():
             usersdata = userData(clan_data['member-data'],token,header)
         except Exception as e:
             return f"Invalid Token or Ip Address not whitelisted!! {e}"
-        
+        message = ""
         if checkuser == None:
             #Need to get data in Mongo DB
             collection.insert_one(
@@ -108,11 +119,11 @@ def getToken():
                 {"usermail":f"{mail}"},
                 {
                     "$set": {
-                    "usermail":"Aneesh",
+                    "usermail":f"{mail}",
                     "data":usersdata
                 }
                 })
-        
+            
         return redirect(url_for('views.home'))
     return render_template('token.html')
         
