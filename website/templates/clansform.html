@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Clans {% endblock title %}
+{% block css %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/userpage.css') }}">
+{% endblock css %}
+{% block content %}
+<form method="POST">
+    <input type="password" id="token" class="fadeIn second" name="token" placeholder="Token">
+    <input type="text" id="clanname" class="fadeIn second" name="clanname" placeholder="Clan Name">
+    <input type="number" id="clanlevel" class="fadeIn second" name="clanlevel" placeholder="Clan Level" min="1">
+    <input type="submit" class="fadeIn fourth" value="Show Clans">
+</form>
+
+
+{% for info in data %}
+<div class="item" style="border-style: dashed;"> 
+     <b>Name:</b> {{ info['name'] }} | <b>Tag:</b> {{ info['tag'] }} | <b>Clan Level:</b> {{ info['clanLevel'] }} | <b>Clan Points:</b> {{ info['clanPoints'] }} 
+</div> <BR>
+
+{% endfor %}
+<script>
+    let toggle = () => {
+        var x = document.getElementById("item");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+    }
+  </script>
+{% endblock content %}

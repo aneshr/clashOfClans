@@ -19,7 +19,7 @@ client = pymongo.MongoClient('mongodb://localhost:27017/')
 
 db = client['clashofclans']
 collection = db['userdatamap']
-
+token = ""
 def clanData(tag,token,header):
     clanInfo = requests.get(f"https://api.clashofclans.com/v1/clans/{tag}",headers=header).json()
     #print(clanInfo)
@@ -126,5 +126,22 @@ def getToken():
             
         return redirect(url_for('views.home'))
     return render_template('token.html')
+
+
+@views.route('/clans', methods=['GET','POST'])
+@login_required
+def clans():
+    if request.method == 'POST':
+        token = request.form.get("token")
+        clanname = request.form.get("clanname")
+        clanlevel = request.form.get("clanlevel")
+        url = f"https://api.clashofclans.com/v1/clans?name={clanname}&minClanLevel={clanlevel}"
+        header = {
+        'Content-type' : 'application/json',
+        'Authorization' : f'Bearer {token}'
+        }
+        clansInfo = requests.get(url=url,headers=header).json()
+        return render_template("clansform.html",data=clansInfo['items'])
+    return render_template('clansform.html')
         
 

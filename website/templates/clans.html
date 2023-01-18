@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block title %} Clans {% endblock title %}
+{% block css %}
+<link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/userpage.css') }}">
+{% endblock css %}
+{% block content %}
+
+{% for info in data %}
+
+<div class="item" style=""> 
+     Name: {{ info['name'] }} Tag: {{ info['tag'] }} Clan Level: {{ info['clanLevel'] }} Clan Points: {{ info['clanPoints'] }} 
+</div> <BR>
+
+{% endfor %}
+
+{% endblock content %}
