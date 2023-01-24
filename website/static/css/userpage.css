@@ -3,7 +3,9 @@
     padding: 5px;
     width: 50px;
 }
-
+body{
+    background-color: #fff;
+}
   label {
 
     font-family: 'Heebo', sans-serif;
@@ -13,7 +15,7 @@
     font-style: normal;
     text-transform: capitalize;
     color: #f7f7f7;
-    background-color: #730bc8;
+    background-color: #6800bd;
     border-radius: 0rem;
     -webkit-border-radius: 0rem;
     -moz-border-radius: 0rem;
@@ -75,7 +77,7 @@
         padding: 0.35rem 0.5rem;
         border-style: none;
         border-width: 0rem;
-        border-color: #2defa8;
+        border-color: #7a04f8;
         -webkit-box-shadow: inset 32px -8px 0px -16px rgba(51,51,51,1);
         -moz-box-shadow: inset 32px -8px 0px -16px rgba(51,51,51,1);
         -box-shadow: inset 32px -8px 0px -16px rgba(51,51,51,1); 
@@ -114,8 +116,8 @@
         100%{
           transform:scale(1.1);
           -webkit-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
-      -moz-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
-      box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+          -moz-box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
+          box-shadow: 10px 10px 60px 10px rgba(0,0,0,0.1);
         }
       }
       
@@ -132,7 +134,7 @@
         display: grid;
         border-radius: 5px;
         grid-template-columns: auto auto auto;
-        background-color: #f0f8ff;
+        background-color: #003563;
         padding: 10px;
         background-repeat:no-repeat;
         z-index: -1;
@@ -144,7 +146,7 @@
         padding: 20px;
         font-size: 30px;
         text-align: center;
-        background-color:#9432fc;
+        background-color:#7a04f8;
         position: relative;
         line-height:30px;
       }

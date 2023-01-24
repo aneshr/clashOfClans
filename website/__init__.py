@@ -3,15 +3,21 @@ from flask_sqlalchemy import SQLAlchemy
 import uuid
 from flask_login import LoginManager
 from os import path
-
+from flask_mail import Mail
 db = SQLAlchemy()
 DB_NAME = "cocDB.db"
+app = Flask(__name__)
 
+app.config['SECRET_KEY'] = '<SECRET-KEY>'
+app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:hello@localhost:5433/clashOfClans?options=-c%20search_path=cocschema'
+app.config['MAIL_SERVER']='smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = '<EMAIL-ID>'
+app.config['MAIL_PASSWORD'] = '<APP PASSWORD>'
+mail = Mail(app)
 def create_app():
-    app = Flask(__name__)
-    app.config['SECRET_KEY'] = '6fa459ea-ee8a-3ca4-894e-db77e160355e'
-    app.config['SQLALCHEMY_DATABASE_URI'] = f'postgresql://postgres:hello@localhost:5433/clashOfClans?options=-c%20search_path=cocschema'
-
+       
     db.init_app(app)
     
     from .models import User
